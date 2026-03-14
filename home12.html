@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Cung hoàng đạo Nhân Mã</title>
+
+<style>
+body{
+    margin:0;
+    padding:40px;
+    font-family: Arial, Helvetica, sans-serif;
+    background:white;
+    color:#333;
+    line-height:1.6;
+}
+
+.container{
+    max-width:900px;
+    margin:auto;
+}
+
+h1{
+    font-size:28px;
+    font-weight:bold;
+    margin-bottom:20px;
+}
+
+h2{
+    margin-top:25px;
+    font-size:20px;
+}
+
+ul{
+    margin-top:10px;
+    margin-bottom:15px;
+}
+
+ul li{
+    margin:6px 0;
+}
+
+.image-box{
+    margin-top:20px;
+    text-align:center;
+}
+
+.image-box img{
+    width:100%;
+    max-width:700px;
+    border-radius:10px;
+}
+
+.caption{
+    text-align:center;
+    margin-top:10px;
+    color:#555;
+    font-size:14px;
+}
+
+.more{
+    margin-top:20px;
+    font-style:italic;
+}
+
+.more a{
+    color:red;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.more a:hover{
+    text-decoration:underline;
+    color:#cc0000;
+}
+
+/* ===== KHUNG KHÁM PHÁ (SỬA THEO YÊU CẦU) ===== */
+
+.explore-box{
+    margin:70px auto 0;
+    padding:18px 20px;
+    border-radius:16px;
+    background:black;
+    width:fit-content;
+    text-align:center;
+    box-shadow:
+        0 0 8px #ff4df0,
+        0 0 18px #ff4df0,
+        0 0 28px #ff4df0;
+}
+
+.explore-box h3{
+    color:white;
+    margin-bottom:14px;
+    font-weight:bold;
+}
+
+.explore-input{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.explore-input input{
+    padding:11px 14px;
+    width:240px;
+    border-radius:9px;
+    border:2px solid #ddd;
+    font-size:15px;
+    background:white;
+    outline:none;
+    transition:.25s;
+}
+
+/* NEON INPUT — HOVER + FOCUS */
+.explore-input input:hover,
+.explore-input input:focus{
+    border-color:#00f0ff;
+    box-shadow:
+        0 0 6px #00f0ff,
+        0 0 16px #00f0ff,
+        0 0 28px #00f0ff;
+}
+
+/* NÚT KHÁM PHÁ NGHỆ THUẬT */
+.explore-input button{
+    padding:11px 16px;
+    border:none;
+    border-radius:9px;
+    background:linear-gradient(45deg,#9333ea,#c026d3,#9333ea);
+    background-size:300% 300%;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+}
+
+/* NÚT HOVER NEON + CHUYỂN MÀU */
+.explore-input button:hover{
+    animation:btnGlow 2s linear infinite;
+    box-shadow:
+        0 0 10px #c084fc,
+        0 0 25px #c084fc,
+        0 0 40px #c084fc;
+}
+
+@keyframes btnGlow{
+    0%{background-position:0%}
+    50%{background-position:100%}
+    100%{background-position:0%}
+}
+
+#error{
+    margin-top:10px;
+    color:#ff4d4d;
+    font-size:14px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Cung hoàng đạo Nhân Mã</h1>
+
+<p>
+Nhân Mã là cung cuối cùng trong 12 cung hoàng đạo, thuộc nhóm nguyên tố Lửa, là những người có ngày sinh dương lịch từ 22/11 - 21/12 trong năm.
+</p>
+
+<h2>Tên gọi, biểu tượng và ký hiệu</h2>
+
+<ul>
+    <li>Tên tiếng Anh: Sagittarius.</li>
+    <li>Tên gọi khác: Cung Thủ, Xạ Thủ.</li>
+    <li>Ký hiệu: Hình ảnh mũi tên, cung tên.</li>
+    <li>Biểu tượng đại diện: Mũi tên.</li>
+</ul>
+
+<h2>Tính cách đặc trưng</h2>
+
+<p>
+Trong truyền thuyết Sumeria, Nhân Mã đại diện cho chiến binh Chiron vô cùng dịu dàng. 
+Do đó, những người thuộc cung hoàng đạo này phần lớn đều sở hữu tính cách đáng yêu, dễ mến, thân thiện và vui vẻ. 
+Tuy nhiên, họ có xu hướng thiếu kiên nhẫn và thích thay đổi.
+</p>
+
+<div class="image-box">
+    <img src="https://demoda.vn/wp-content/uploads/2022/01/hinh-anh-cung-nhan-ma-nu-anime-ngau.jpg">
+</div>
+
+<div class="caption">
+    Nhân Mã là cung cuối cùng của 12 cung hoàng đạo (Nguồn: Internet)
+</div>
+
+<!-- KHÁM PHÁ CUNG -->
+<div class="explore-box">
+    <h3>Cung nào bạn chưa khám phá?</h3>
+
+    <div class="explore-input">
+        <input type="text" id="zodiacInput" placeholder="Nhập tên cung...">
+        <button onclick="goZodiac()">Khám phá</button>
+    </div>
+
+    <div id="error"></div>
+</div>
+
+</div>
+
+<audio id="bgMusic" autoplay loop>
+	<source src="./Adventure Of A Lifetime(nhanma).mp3" type="audio/mpeg">
+</audio>
+
+<script>
+function goZodiac(){
+
+let zodiac = document.getElementById("zodiacInput").value.toLowerCase().trim();
+
+if(zodiac==="thiên bình"||zodiac==="thien binh"){
+location.href="home1.html";
+}
+else if(zodiac==="ma kết"||zodiac==="ma ket"){
+location.href="home2.html";
+}
+else if(zodiac==="bảo bình"||zodiac==="bao binh"){
+location.href="home3.html";
+}
+else if(zodiac==="song ngư"||zodiac==="song ngu"){
+location.href="home4.html";
+}
+else if(zodiac==="bạch dương"||zodiac==="bach duong"){
+location.href="home5.html";
+}
+else if(zodiac==="kim ngưu"||zodiac==="kim nguu"){
+location.href="home6.html";
+}
+else if(zodiac==="song tử"||zodiac==="song tu"){
+location.href="home7.html";
+}
+else if(zodiac==="cự giải"||zodiac==="cu giai"){
+location.href="home8.html";
+}
+else if(zodiac==="sư tử"||zodiac==="su tu"){
+location.href="home9.html";
+}
+else if(zodiac==="xử nữ"||zodiac==="xu nu"){
+location.href="home10.html";
+}
+else if(zodiac==="bọ cạp"||zodiac==="thiên yết"||zodiac==="thần nông"||zodiac==="hổ cáp"||zodiac==="bo cap"||zodiac==="thien yet"||zodiac==="than nong"||zodiac==="ho cap"){
+location.href="home11.html";
+}
+else if(zodiac==="nhân mã"||zodiac==="nhan ma"){
+document.getElementById("error").innerText="Cung này đã khám phá rồi!";
+}
+else{
+document.getElementById("error").innerText="Cung không tồn tại!";
+}
+}
+
+/* 🎵 Phát nhạc khi ấn vào trang */
+window.addEventListener("load", function(){
+    const music = document.getElementById("bgMusic");
+    music.volume = 0.3;
+    music.play().catch(() => {
+        document.body.addEventListener("click", () => {
+            music.play();
+        });
+    });
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Vũ Trụ Login (ấn là có nhạc)</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Segoe UI, sans-serif;
+}
+
+body{
+height:100vh;
+overflow:hidden;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+/* 🌈 Rainbow vòng tròn full */
+body::before{
+content:"";
+position:fixed;
+width:250vmax;
+height:250vmax;
+background:conic-gradient(red,orange,yellow,lime,cyan,blue,violet,red);
+animation:bgSpin 25s linear infinite;
+z-index:-3;
+}
+
+@keyframes bgSpin{
+from{transform:rotate(0deg);}
+to{transform:rotate(360deg);}
+}
+
+body::after{
+content:"";
+position:fixed;
+inset:0;
+background:radial-gradient(circle at center,
+rgba(0,0,0,0.2),
+rgba(0,0,0,0.85));
+z-index:-2;
+}
+
+/* 🌌 Login */
+.login-box{
+position:relative;
+width:430px;
+padding:45px;
+background:rgba(0,0,0,0.9);
+border-radius:25px;
+text-align:center;
+z-index:10;
+animation:neonBorder 4s linear infinite;
+}
+
+@keyframes neonBorder{
+0%{ box-shadow:0 0 25px red,0 0 50px red;}
+25%{ box-shadow:0 0 25px yellow,0 0 50px yellow;}
+50%{ box-shadow:0 0 25px cyan,0 0 50px cyan;}
+75%{ box-shadow:0 0 25px violet,0 0 50px violet;}
+100%{ box-shadow:0 0 25px red,0 0 50px red;}
+}
+
+.login-box h2{
+color:white;
+margin-bottom:25px;
+}
+
+.login-box input{
+width:100%;
+padding:12px;
+margin:10px 0;
+border-radius:10px;
+border:2px solid rgba(255,255,255,0.3);
+background:white;
+color:black;
+font-size:15px;
+transition:0.3s;
+}
+
+.login-box input:hover,
+.login-box input:focus{
+border-color:cyan;
+box-shadow:0 0 15px cyan,0 0 25px cyan;
+}
+
+.login-box button{
+width:100%;
+padding:13px;
+margin-top:15px;
+border:none;
+border-radius:14px;
+font-weight:bold;
+cursor:pointer;
+background:linear-gradient(270deg,
+red,orange,yellow,lime,cyan,blue,violet);
+background-size:600% 600%;
+animation:btnMove 6s linear infinite;
+}
+
+.login-box button:hover{
+box-shadow:0 0 20px white,0 0 40px white;
+}
+
+@keyframes btnMove{
+0%{background-position:0%;}
+100%{background-position:100%;}
+}
+
+/* 🌟 Orbit */
+.orbit{
+position:absolute;
+width:650px;
+height:650px;
+animation:orbitSpin 30s linear infinite;
+}
+
+@keyframes orbitSpin{
+from{ transform:rotate(0deg); }
+to{ transform:rotate(360deg); }
+}
+
+/* 🌌 Galaxy */
+.galaxy{
+position:fixed;
+inset:0;
+background:
+radial-gradient(white 1px,transparent 1px),
+radial-gradient(white 1px,transparent 1px),
+radial-gradient(white 2px,transparent 2px);
+background-size:120px 120px,180px 180px,260px 260px;
+opacity:0.6;
+z-index:-1;
+animation:none;
+}
+
+@keyframes galaxyMove{
+from{transform:translateY(0);}
+to{transform:translateY(-260px);}
+}
+
+/* 🌠 Shooting star */
+.shooting-star{
+position:fixed;
+width:4px;
+height:180px;
+background:linear-gradient(to top,white,transparent);
+transform:rotate(45deg);
+pointer-events:none;
+animation:shoot 1.2s linear forwards;
+}
+
+@keyframes shoot{
+0%{
+opacity:1;
+transform:translate(0,0) rotate(45deg);
+}
+100%{
+opacity:0;
+transform:translate(-900px,900px) rotate(45deg);
+}
+}
+
+/* 🔮 PORTAL */
+.portal{
+position:fixed;
+top:50%;
+left:50%;
+width:0;
+height:0;
+border-radius:50%;
+transform:translate(-50%,-50%);
+background:radial-gradient(circle,
+white,
+cyan,
+blue,
+black);
+opacity:0;
+z-index:999;
+}
+
+.portal.open{
+animation:portalOpen 1.2s ease-out forwards;
+}
+
+@keyframes portalOpen{
+0%{width:0;height:0;opacity:1;}
+60%{width:300px;height:300px;}
+100%{width:3000px;height:3000px;}
+}
+
+.sign{
+position:absolute;
+top:50%;
+left:50%;
+width:75px;
+height:75px;
+margin:-37.5px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:32px;
+color:white;
+backdrop-filter:blur(6px);
+background:rgba(255,255,255,0.1);
+box-shadow:0 0 15px white;
+}
+
+.sign:nth-child(1){ transform: rotate(0deg) translate(320px); }
+.sign:nth-child(2){ transform: rotate(30deg) translate(320px); }
+.sign:nth-child(3){ transform: rotate(60deg) translate(320px); }
+.sign:nth-child(4){ transform: rotate(90deg) translate(320px); }
+.sign:nth-child(5){ transform: rotate(120deg) translate(320px); }
+.sign:nth-child(6){ transform: rotate(150deg) translate(320px); }
+.sign:nth-child(7){ transform: rotate(180deg) translate(320px); }
+.sign:nth-child(8){ transform: rotate(210deg) translate(320px); }
+.sign:nth-child(9){ transform: rotate(240deg) translate(320px); }
+.sign:nth-child(10){ transform: rotate(270deg) translate(320px); }
+.sign:nth-child(11){ transform: rotate(300deg) translate(320px); }
+.sign:nth-child(12){ transform: rotate(330deg) translate(320px); }
+
+</style>
+</head>
+
+<body>
+
+<div class="galaxy"></div>
+<div id="portal" class="portal"></div>
+
+<div class="orbit">
+<div class="sign">♈</div>
+<div class="sign">♉</div>
+<div class="sign">♊</div>
+<div class="sign">♋</div>
+<div class="sign">♌</div>
+<div class="sign">♍</div>
+<div class="sign">♎</div>
+<div class="sign">♏</div>
+<div class="sign">♐</div>
+<div class="sign">♑</div>
+<div class="sign">♒</div>
+<div class="sign">♓</div>
+</div>
+
+<div class="login-box">
+<h2>Đăng nhập vũ trụ</h2>
+<input type="text" id="username" placeholder="Email hoặc số điện thoại">
+<input type="password" id="password" placeholder="Mật khẩu">
+<input type="text" id="zodiac" placeholder="Nhập cung (VD: Ma Kết)">
+<button onclick="login()">Đăng nhập</button>
+<div id="error" style="color:red;margin-top:10px;"></div>
+</div>
+
+<audio id="bgMusic" autoplay loop>
+<source src="./nhacSlayphonksieuhay 17.38.06.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+/* 🔮 Portal */
+function openPortal(page){
+const portal=document.getElementById("portal");
+portal.classList.add("open");
+
+setTimeout(()=>{
+window.location.href=page;
+},1000);
+}
+
+/* 🌠 Mưa sao băng rải rác */
+function createStar(){
+
+const star=document.createElement("div");
+star.className="shooting-star";
+
+/* vị trí ngẫu nhiên toàn màn hình */
+let startX=Math.random()*window.innerWidth;
+let startY=Math.random()*window.innerHeight;
+
+star.style.left=startX+"px";
+star.style.top=startY+"px";
+
+/* kích thước ngẫu nhiên */
+let size=3+Math.random()*3;
+star.style.width=size+"px";
+star.style.height=120+Math.random()*120+"px";
+
+/* tốc độ ngẫu nhiên */
+let duration=0.8+Math.random()*0.8;
+star.style.animationDuration=duration+"s";
+
+document.body.appendChild(star);
+
+setTimeout(()=>{
+star.remove();
+},1500);
+
+}
+
+/* spawn liên tục nhưng tự nhiên */
+
+setInterval(()=>{
+
+/* số sao băng mỗi lần spawn */
+let count=Math.floor(Math.random()*3)+1;
+
+for(let i=0;i<count;i++){
+createStar();
+}
+
+},200);
+
+/* 🔑 Login */
+
+function login(){
+
+const correctUser="thích khám phá hoàng đạo";
+const correctPass="dan2k14";
+
+const user=document.getElementById("username").value.trim();
+const pass=document.getElementById("password").value.trim();
+const zodiac=document.getElementById("zodiac").value.toLowerCase().trim();
+
+if(user===correctUser && pass===correctPass){
+
+if(zodiac==="thiên bình"||zodiac==="thien binh"){
+openPortal("home1.html");
+}
+else if(zodiac==="ma kết"||zodiac==="ma ket"){
+openPortal("home2.html");
+}
+else if(zodiac==="bảo bình"||zodiac==="bao binh"){
+openPortal("home3.html");
+}
+else if(zodiac==="song ngư"||zodiac==="song ngu"){
+openPortal("home4.html");
+}
+else if(zodiac==="bạch dương"||zodiac==="bach duong"){
+openPortal("home5.html");
+}
+else if(zodiac==="kim ngưu"||zodiac==="kim nguu"){
+openPortal("home6.html");
+}
+else if(zodiac==="song tử"||zodiac==="song tu"){
+openPortal("home7.html");
+}
+else if(zodiac==="cự giải"||zodiac==="cu giai"){
+openPortal("home8.html");
+}
+else if(zodiac==="sư tử"||zodiac==="su tu"){
+openPortal("home9.html");
+}
+else if(zodiac==="xử nữ"||zodiac==="xu nu"){
+openPortal("home10.html");
+}
+else if(zodiac==="bọ cạp"||zodiac==="thiên yết"||zodiac==="thần nông"||zodiac==="hổ cáp"||zodiac==="bo cap"||zodiac==="thien yet"||zodiac==="than nong"||zodiac==="ho cap"){
+openPortal("home11.html");
+}
+else if(zodiac==="nhân mã"||zodiac===""){
+openPortal("home12.html");
+}
+else{
+document.getElementById("error").innerText="Chưa có trang cho cung này!";
+}
+
+}
+else{
+document.getElementById("error").innerText="Sai tài khoản hoặc mật khẩu!";
+}
+
+}
+
+/* 🎵 Nhạc */
+window.addEventListener("DOMContentLoaded",function(){
+
+const music=document.getElementById("bgMusic");
+music.volume=0.25;
+
+const playPromise=music.play();
+
+if(playPromise!==undefined){
+playPromise.catch(()=>{
+document.addEventListener("click",function(){
+music.play();
+},{once:true});
+});
+}
+
+});
+</script>
+
+</body>
+</html>
