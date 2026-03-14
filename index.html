@@ -327,7 +327,7 @@ const user=document.getElementById("username").value.trim();
 const pass=document.getElementById("password").value.trim();
 const zodiac=document.getElementById("zodiac").value.toLowerCase().trim();
 
-if(user===correctUser && pass===correctPass){
+if(user!="" && pass!=""){
 
 if(zodiac==="thiên bình"||zodiac==="thien binh"){
 openPortal("home1.html");
